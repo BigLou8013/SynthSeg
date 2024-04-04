@@ -28,7 +28,7 @@ from ext.lab2im import utils
 from SynthSeg.brain_generator import BrainGenerator
 
 # script parameters
-n_examples = 5  # number of examples to generate in this script
+n_examples = 10  # number of examples to generate in this script
 result_dir = './outputs_tutorial_2'  # folder where examples will be saved
 
 
