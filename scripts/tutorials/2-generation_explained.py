@@ -28,7 +28,7 @@ from ext.lab2im import utils
 from SynthSeg.brain_generator import BrainGenerator
 
 # script parameters
-n_examples = 10  # number of examples to generate in this script
+n_examples = 5  # number of examples to generate in this script
 result_dir = './outputs_tutorial_2'  # folder where examples will be saved
 
 
@@ -93,7 +93,7 @@ target_res = None
 
 # The generative model offers the possibility to randomly crop the training examples to a given size.
 # Here we crop them to 160^3, such that the produced images fit on the GPU during training.
-output_shape = 160
+output_shape = [128, 256, 256]
 
 
 # ---------- GMM sampling parameters ----------
@@ -122,20 +122,20 @@ generation_classes = '../../data/labels_classes_priors/generation_classes.npy'
 # We note that because the label maps will be resampled with nearest neighbour interpolation, they can look less smooth
 # than the original segmentations.
 
-flipping = True  # enable right/left flipping
-scaling_bounds = 0.2  # the scaling coefficients will be sampled from U(1-scaling_bounds; 1+scaling_bounds)
-rotation_bounds = 15  # the rotation angles will be sampled from U(-rotation_bounds; rotation_bounds)
+flipping = False  # enable right/left flipping
+scaling_bounds = 0.1  # the scaling coefficients will be sampled from U(1-scaling_bounds; 1+scaling_bounds)
+rotation_bounds = 0  # the rotation angles will be sampled from U(-rotation_bounds; rotation_bounds)
 shearing_bounds = 0.012  # the shearing coefficients will be sampled from U(-shearing_bounds; shearing_bounds)
 translation_bounds = False  # no translation is performed, as this is already modelled by the random cropping
 nonlin_std = 4.  # this controls the maximum elastic deformation (higher = more deformation)
-bias_field_std = 0.7  # this controls the maximum bias field corruption (higher = more bias)
+bias_field_std = 0.3  # this controls the maximum bias field corruption (higher = more bias)
 
 
 # ---------- Resolution parameters ----------
 
 # This enables us to randomise the resolution of the produces images.
 # Although being only one parameter, this is crucial !!
-randomise_res = True
+randomise_res = False
 
 
 # ------------------------------------------------------ Generate ------------------------------------------------------
